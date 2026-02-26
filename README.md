@@ -62,9 +62,40 @@ Access the admin portal at `/admin` using the following credentials:
 4. Access the public site at `http://localhost:5173`.
 5. Access the admin dashboard at `http://localhost:5173/admin`.
 
+## Deployment Guide
+
+### 1. Deploying the Backend (Render)
+1. Push this repository to your GitHub account.
+2. Sign up / Log in to [Render](https://render.com/).
+3. Click **New +** and select **Web Service**.
+4. Connect your GitHub repository and select this project.
+5. Configure the deployment:
+   - **Name:** `megaplexprime-api` (or similar)
+   - **Root Directory:** `backend` *(Important!)*
+   - **Environment:** `Node`
+   - **Build Command:** `npm install`
+   - **Start Command:** `npm start`
+6. Scroll down to **Environment Variables** and add:
+   - `MONGO_URI`: Your MongoDB Atlas connection string.
+   - `PORT`: `5000` (Optional, Render will automatically assign a port).
+7. Click **Create Web Service**. Wait for the build to finish, then copy your Render API URL (e.g., `https://megaplexprime-api.onrender.com`).
+
+### 2. Deploying the Frontend (Vercel)
+1. Sign up / Log in to [Vercel](https://vercel.com/).
+2. Click **Add New** > **Project**.
+3. Import the same GitHub repository.
+4. Configure the project:
+   - **Project Name:** `megaplexprime`
+   - **Framework Preset:** `Vite`
+   - **Root Directory:** `frontend` *(Important!)*
+5. Open the **Environment Variables** section and add:
+   - **Name:** `VITE_API_URL`
+   - **Value:** `https://your-render-api-url.onrender.com/api` *(Paste the URL you got from Render in step 1, ensuring it ends in `/api`)*.
+6. Click **Deploy**. Vercel will build and host your frontend website.
+
 ## Live URLs
-- **Frontend Vercel Deployment:** *(To be added post-deployment)*
-- **Backend Render Deployment:** *(To be added post-deployment)*
+- **Frontend Vercel Deployment:** *(Add your deployed Vercel link here)*
+- **Backend Render Deployment:** *(Add your deployed Render link here)*
 
 ## Project Structure
 ```text
